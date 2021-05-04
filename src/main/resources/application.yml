@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: cards
+  profiles:
+    active: production
+
+#DATABASE ACCESS
+
+datasource:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/card?serverTimezone=Europe/Warsaw&useSSL=false&allowPublicKeyRetrieval=true
+  username: ${MYSQL_LOGIN}
+  password: ${MYSQL_PASSWORD}
+jpa:
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+  database: mysql
+  show-sql: true
+  hibernate:
+    ddl-auto: update
+    generate-ddl: true
+
+
+#ACTUATOR INFO
+info:
+  app:
+    name: "Cards"
+    version: "0.0.1"
+    profile: ${spring.profiles.active}
+  serverInfo:
+    port: ${server.port}
+
+#ACCESS
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+application:
+  allow-get-cards: ${accounts.allow-get-cards}
+
+eureka:
+  client: ${eureka-client}
+
+server:
+  port: 5555
