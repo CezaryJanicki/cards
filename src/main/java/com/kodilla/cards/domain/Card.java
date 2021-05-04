@@ -27,4 +27,10 @@ public class Card {
 
     @Column(name = "customerId")
     private Long customerId;
+
+    public Card(Long id, String type, String nrb) {
+        this.id = id;
+        this.type = type;
+        this.nrb = nrb;
+    }
 }

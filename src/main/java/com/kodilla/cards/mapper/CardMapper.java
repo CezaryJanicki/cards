@@ -15,7 +15,6 @@ public class CardMapper {
         .id(card.getId())
         .type(card.getType())
         .nrb(card.getNrb())
-        .customerId(card.getCustomerId())
                 .build()).collect(Collectors.toList());
     }
 }
